@@ -4,7 +4,8 @@ COPY config/prometheus.yml /prometheus.yml
 
 RUN apk update \
     && apk upgrade \
-    && apk add git make bash npm nodejs curl
+    && apk add git make bash npm nodejs curl \
+    && npm -g install npm
 
 RUN  cd /opt \
     && git clone https://github.com/prometheus/prometheus.git \

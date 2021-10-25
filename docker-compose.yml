@@ -3,7 +3,7 @@ version: '3.2'
 services:
   prometheus:
     build:
-      context: ./docker/
+      context: ./.docker/
     volumes:
       - ./.config/:/etc/prometheus/
       - ./prometheus:/prometheus
