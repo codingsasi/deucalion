@@ -3,19 +3,19 @@ version: '3.2'
 services:
   prometheus:
     build:
-      context: ./.docker/
+      context: './.docker/'
     volumes:
-      - ./.config/:/etc/prometheus/
-      - ./prometheus:/prometheus
-    # command:
-      # - '--config.file=/etc/prometheus/prometheus.yml'
-    #   - '--storage.tsdb.path=/data'
+      - ./.config/etc:/etc/prometheus/
+      - ./.config/prometheus:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus/data'
     ports:
       - 9090:9090
     restart: always
     networks:
       - promnet
-    container_name: deucalion_prom
+    container_name: deucalion
 
 networks:
   promnet:

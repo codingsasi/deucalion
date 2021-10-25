@@ -1,0 +1,5 @@
+.idea
+.config/etc/*
+.config/prometheus/data/*
+!.config/etc/.gitkeep
+!.config/prometheus/data/.gitkeep

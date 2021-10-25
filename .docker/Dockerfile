@@ -1,6 +1,8 @@
 FROM golang:1.17.1-alpine3.14
 
-COPY config/prometheus.yml /prometheus.yml
+WORKDIR /prometheus
+
+RUN mkdir /etc/prometheus
 
 RUN apk update \
     && apk upgrade \
@@ -12,8 +14,11 @@ RUN  cd /opt \
     && cd prometheus && git checkout v2.30.1 \
     && make build
 
-RUN ln -sf /opt/prometheus/conf /etc/prometheus
-RUN ln -sf /opt/prometheus/data /prometheus
+RUN cp /opt/prometheus/prometheus /bin/prometheus && cp /opt/prometheus/promtool /bin/promtool
 
-ENTRYPOINT [ "/opt/prometheus/prometheus" ]
-CMD [ "--config.file=/prometheus.yml" ]
+RUN ln -s /opt/prometheus/console_libraries /opt/prometheus/consoles/ /etc/prometheus/ && \
+    chown -R nobody:nobody /etc/prometheus
+
+COPY prom/prometheus.yml prometheus.yml
+RUN cat prometheus.yml
+ENTRYPOINT [ "prometheus" ]
