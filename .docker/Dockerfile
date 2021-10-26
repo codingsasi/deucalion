@@ -19,6 +19,4 @@ RUN cp /opt/prometheus/prometheus /bin/prometheus && cp /opt/prometheus/promtool
 RUN ln -s /opt/prometheus/console_libraries /opt/prometheus/consoles/ /etc/prometheus/ && \
     chown -R nobody:nobody /etc/prometheus
 
-COPY prom/prometheus.yml prometheus.yml
-RUN cat prometheus.yml
 ENTRYPOINT [ "prometheus" ]

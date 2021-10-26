@@ -3,3 +3,5 @@
 .config/prometheus/data/*
 !.config/etc/.gitkeep
 !.config/prometheus/data/.gitkeep
+.env
+prometheus/prometheus.yml
