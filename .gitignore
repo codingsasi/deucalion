@@ -5,3 +5,4 @@
 !.config/prometheus/data/.gitkeep
 .env
 prometheus/prometheus.yml
+prometheus/web.yml
