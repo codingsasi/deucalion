@@ -18,6 +18,7 @@ services:
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
+    network_mode: host
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
