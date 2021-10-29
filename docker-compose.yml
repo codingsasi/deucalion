@@ -60,8 +60,20 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
     ports:
-      - 3000:3000
+      - $GRAFANA_PORTS
     restart: unless-stopped
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:$CADVISOR_VERSION
+    container_name: cadvisor
+    ports:
+      - $CADVISOR_PORTS
+    restart: unless-stopped
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
 
 volumes:
     prometheus_data: {}

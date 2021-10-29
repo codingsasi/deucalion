@@ -16,7 +16,7 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['node_exporter:9100']
+      - targets: ['127.0.0.1:9100']
         labels:
           group: 'Server'
   
@@ -26,6 +26,12 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['memcached_exporter:9150', 'mysql_exporter:9104']
+      - targets: ['127.0.0.1:9150', '127.0.0.1:9104']
         labels:
           group: 'QED42 Website'
+  
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['127.0.0.1:9323', '127.0.0.1:8080']
+  
+  
