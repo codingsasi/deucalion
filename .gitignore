@@ -4,5 +4,5 @@
 !.config/etc/.gitkeep
 !.config/prometheus/data/.gitkeep
 .env
-prometheus/prometheus.yml
-prometheus/web.yml
+*/prometheus.yml
+*/web.yml
