@@ -1,4 +1,4 @@
-# This file is not in use. It's only here for testing and trying to compile prometheus from source.
+# This file is not in use. It's only here for testing and trying to compile prometheus from source using alpine.
 FROM golang:1.17.1-alpine3.14
 
 ENV prometheus_version 2.39.1
